@@ -1,9 +1,16 @@
-What is Emmet?
---> Emmet is a plugin for many popular text editors which greatly improves HTML & CSS workflow:
-Difference between a Library and Framework?
-What is CDN? Why do we use it?
-Why is React known as React?
-What is crossorigin in script tag?
-What is diference between React and ReactDOM
-What is difference between react.development.js and react.production.js files via CDN?
-What is async and defer?
+1. What is Emmet?
+--> Emmet is a plugin for many popular text editors which greatly improves HTML & CSS workflow?
+2. Difference between a Library and Framework?
+--> A framework is a structure that you can build software on. It serves as a foundation, so you’re not starting entirely from scratch. Frameworks are typically associated with a specific programming language and are suited to different types of tasks.
+A library is something which can be used inside framework and saves lot of effort and time.Ex react,angular.
+3. What is CDN? Why do we use it?
+--> CDNs cache content like web pages, images, and video in proxy servers near to your physical location. It is used to use those functionalities directly just importing inside script tag.
+4. Why is React known as React?
+--> I guess it’s because React emphasizes the reactiveness of state changes. React is all about reacting to a state change. State changes are the critical and core features of React. That’s why it’s named after that.
+5. What is crossorigin in script tag?
+--> The crossorigin attribute sets the mode of the request to an HTTP CORS Request. Web pages often make requests to load resources on other servers. Here is where CORS comes in.
+6. What is diference between React and ReactDOM?
+--> React is universal and used to create elements and objects. ReactDom is specific for web and uses render method to render all the react elements.
+7. What is difference between react.development.js and react.production.js files via CDN?
+--> react.development.js is used in local and react.production.js used in production because its a minified version of all the functionalities and its more efficient.
+8. What is async and defer?
