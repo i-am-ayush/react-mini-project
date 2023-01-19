@@ -1,0 +1,32 @@
+{
+  "name": "learning-react",
+  "version": "1.0.0",
+  "description": "learningggg",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "jajsdabs"
+  },
+  "keywords": [
+    "ads"
+  ],
+  "author": "saurav mehta",
+  "license": "ISC",
+  "dependencies": {
+    "parcel": "^2.8.3",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "process": "^0.11.10"
+  },
+  "browserslist": {
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
