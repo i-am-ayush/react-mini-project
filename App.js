@@ -57,6 +57,7 @@ const RestaurantCard = ({
   cloudinaryImageId,
   lastMileTravelString,
 }) => {
+  console.log("cloudinaryImageId", cloudinaryImageId);
   return (
     <div className="card">
       <img src= {`https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/${cloudinaryImageId}`}/>
@@ -78,6 +79,32 @@ const Body = () => {
     </div>
   )
 }
+
+// const RestaurantCard = (restaurant) => {
+//   console.log("restaurant", restaurant.abc.data)
+//   const {name}= restaurant.abc.data;
+//   return (
+//     <div className="card">
+//       <h2>{name}</h2>
+//       {/* <img src= {`https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/${cloudinaryImageId}`}/>
+//       <h2>{name}</h2>
+//       <h3>{cuisines.join(", ")}</h3>
+//       <h4>{lastMileTravelString} minutes</h4> */}
+//     </div>
+//   )
+// }
+
+// const Body = () => {
+//   return (
+//     <div className="restaurantCard">
+//       {
+//         RestaurantList.map(restaurant =>{
+//           return <RestaurantCard abc = {restaurant}/>
+//         })
+//       }
+//     </div>
+//   )
+// }
 
 const Footer = () => {
   return <h4>footer</h4>
