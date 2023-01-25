@@ -57,7 +57,6 @@ const RestaurantCard = ({
   cloudinaryImageId,
   lastMileTravelString,
 }) => {
-  console.log("cloudinaryImageId", cloudinaryImageId);
   return (
     <div className="card">
       <img src= {`https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/${cloudinaryImageId}`}/>
@@ -73,7 +72,7 @@ const Body = () => {
     <div className="restaurantCard">
       {
         RestaurantList.map(restaurant =>{
-          return <RestaurantCard {...restaurant.data}/>
+          return <RestaurantCard {...restaurant.data} key = {restaurant.data.id}/>
         })
       }
     </div>
