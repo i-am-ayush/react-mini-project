@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 export const Title = () => (
     <a href="/">
@@ -7,20 +8,23 @@ export const Title = () => (
 )
 
 
-export const Header = () => {
+const Header = () => {
     const [isLoggedIn, setIsLoggedIn] = useState();
     return (
         <div className="header">
             <Title />
             <div className="nav-items">
                 <ul>
-                    <li>Home</li>
-                    <li>About</li>
-                    <li>Contact</li>
+                    {/* It doesn't reload, this is client side routing*/}
+                    <li><Link to="/"> Home </Link></li>
+                    <li><Link to="/about"> About </Link></li>
+                    <li><Link to="/contact"> Contact</Link></li>
                     <li>Cart</li>
                 </ul>
             </div>
-            {!isLoggedIn ? <button onClick={()=>setIsLoggedIn(true)}>Login</button> : <button onClick={()=>setIsLoggedIn(false)}>Logout</button>}
+            {!isLoggedIn ? <button onClick={() => setIsLoggedIn(true)}>Login</button> : <button onClick={() => setIsLoggedIn(false)}>Logout</button>}
         </div>
     )
 }
+
+export default Header
