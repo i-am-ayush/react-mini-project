@@ -1,4 +1,4 @@
-import React, { Children } from "react";
+import React, { lazy, Suspense } from "react";
 import ReactDOM from "react-dom/client";
 import Header from "./components/Header";
 import Body from "./components/Body";
@@ -8,15 +8,29 @@ import About from "./components/About";
 import Error from "./components/Error";
 import Contact from "./components/Contact";
 import RestaurantMenu from "./components/RestaurantMenu";
+import Profile from "./components/Profile";
+import Shimmer from "./components/Shimmer";
+
+
+// Chunking
+// Code Splitting
+// Dynamic Building
+// Lazy Loading
+// on demand loading
+// dynamic import
+
+const Instamart = lazy(() => import("./components/Instamart"))
+// first time it will give error because it takes sometime to load and react will render before waiting
+// in that case we should use suspense
 
 const AppLayout = () => {
-  return (
-    <>
-      <Header />
-      <Outlet/>
-      <Footer />
-    </>
-  )
+    return (
+        <>
+            <Header />
+            <Outlet />
+            <Footer />
+        </>
+    )
 }
 
 // This is basic router in which we font find header footer in about page
@@ -36,24 +50,37 @@ const AppLayout = () => {
 const appRouter = createBrowserRouter([
     {
         path: "/",
-        element: <AppLayout/>,
-        errorElement: <Error/>,
+        element: <AppLayout />,
+        errorElement: <Error />,
         children: [
             {
                 path: "/",
-                element: <Body/>
+                element: <Body />
             },
             {
-                path: "/about",
-                element: <About/>
+                path: "/about", // parent path is /about now
+                element: <About />,
+                children: [
+                    {
+                        path: "profile",
+                        element: <Profile />
+                    },
+                ]
             },
             {
                 path: "/contact",
-                element: <Contact/>
+                element: <Contact />
             },
             {
                 path: "/restaurant/:id",
-                element: <RestaurantMenu/>
+                element: <RestaurantMenu />
+            },
+            {
+                path: "/instamart",
+                element: (<Suspense fallback={<Shimmer/>}>
+                    <Instamart />
+                </Suspense>
+                )
             },
 
         ]
