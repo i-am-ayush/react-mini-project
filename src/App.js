@@ -1,4 +1,4 @@
-import React, { lazy, Suspense } from "react";
+import React, { lazy, Suspense, useState } from "react";
 import ReactDOM from "react-dom/client";
 import Header from "./components/Header";
 import Body from "./components/Body";
@@ -10,6 +10,7 @@ import Contact from "./components/Contact";
 import RestaurantMenu from "./components/RestaurantMenu";
 import Profile from "./components/Profile";
 import Shimmer from "./components/Shimmer";
+import UserContext from "./utils/userContext";
 
 
 // Chunking
@@ -24,13 +25,19 @@ const Instamart = lazy(() => import("./components/Instamart"))
 // in that case we should use suspense
 
 const AppLayout = () => {
+    const [userInfo, setUserInfo] = useState({
+        name: 'dummy',
+        email: 'dummy@gmail.com'
+    })
     return (
         <>
-            <Header />
-            <Outlet />
-            <div className = "position: fixed bottom-0 w-[100%] bg-pink-50 border-t-2 border-solid;">
-            <Footer />
-            </div>
+            <UserContext.Provider value={{ user: userInfo, setUserInfo: setUserInfo }}>
+                <Header />
+                <Outlet />
+                <div className="position: fixed bottom-0 w-[100%] bg-pink-50 border-t-2 border-solid;">
+                    <Footer />
+                </div>
+            </UserContext.Provider>
         </>
     )
 }
@@ -79,7 +86,7 @@ const appRouter = createBrowserRouter([
             },
             {
                 path: "/instamart",
-                element: (<Suspense fallback={<Shimmer/>}>
+                element: (<Suspense fallback={<Shimmer />}>
                     <Instamart />
                 </Suspense>
                 )
