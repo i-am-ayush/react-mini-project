@@ -1,7 +1,7 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import useOnline from "../utils/useOnline";
-
+import userContext from "../utils/userContext";
 
 export const Title = () => (
     <a href="/">
@@ -9,10 +9,20 @@ export const Title = () => (
     </a>
 )
 
-
+// console.log('user', user);
 const Header = () => {
     const [isLoggedIn, setIsLoggedIn] = useState();
     const online = useOnline();
+    const { user, setUserInfo } = useContext(userContext);
+    console.log('okokk');
+    const doSomething = () => {
+        setIsLoggedIn(true);
+        setUserInfo({
+            name: 'Ayush Srivastava',
+            email: 'ayush@gmail.com'
+        })
+    }
+
     return (
         <div className="flex justify-between bg-pink-50 shadow-xl sm:bg-blue-300">
             {/* It means sm , it changes the ui when it crosses small media */}
@@ -27,8 +37,9 @@ const Header = () => {
                     <li className="px-2">Cart</li>
                 </ul>
             </div>
+           <h1 className="p-10 font-bold text-red-900">{user.name}</h1>
             {/* <h1>{online?'login':'logout'}</h1> */}
-            {!isLoggedIn ? <button className="mx-2" onClick={() => setIsLoggedIn(true)}>Login</button> : <button onClick={() => setIsLoggedIn(false)}>Logout</button>}
+            {!isLoggedIn ? <button className="mx-2" onClick={() => doSomething()}>Login</button> : <button onClick={() => setIsLoggedIn(false)}>Logout</button>}
         </div>
     )
 }
