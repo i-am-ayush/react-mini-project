@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
 import { IMAGE_CDN_URL } from "../constant";
+import MenuObject from './MenuObject';
 
 const RestaurantMenu = () => {
     const params = useParams();
@@ -15,9 +16,8 @@ const RestaurantMenu = () => {
     useEffect(() => {
         getRestaurantInfo()
     }, [])
-    console.log("okokok", Object.keys(restaurant).length)
     return Object.keys(restaurant).length > 0 ? (
-        <div className= "menuItems">
+        <div>
             <div>
                 <h1>Restaurant id : {id}</h1>
                 <h2>{restaurant.name}</h2>
@@ -27,14 +27,12 @@ const RestaurantMenu = () => {
                 <h3>{restaurant.avgRating} *</h3>
                 <h3>{restaurant.costForTwoMsg}</h3>
                 <h3>{restaurant.area}</h3>
-            </div>
-            <div>
                 <h1>Menu</h1>
-                <ul>
-                    {Object.values(restaurant?.menu?.items).map((item)=>{
-                        return <li key = {item.id}>{item.name}</li> 
+                <div className="flex flex-col">
+                    {Object.values(restaurant?.menu?.items).map((itemObject) => {
+                        return <MenuObject itemObject={itemObject} />
                     })}
-                </ul>
+                </div>
             </div>
         </div>
     ) : null

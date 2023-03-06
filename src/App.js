@@ -11,6 +11,9 @@ import RestaurantMenu from "./components/RestaurantMenu";
 import Profile from "./components/Profile";
 import Shimmer from "./components/Shimmer";
 import UserContext from "./utils/userContext";
+import { Provider } from "react-redux";
+import store from "./utils/store";
+import Cart from "./components/Cart";
 
 
 // Chunking
@@ -30,7 +33,7 @@ const AppLayout = () => {
         email: 'dummy@gmail.com'
     })
     return (
-        <>
+        <Provider store = {store}>
             <UserContext.Provider value={{ user: userInfo, setUserInfo: setUserInfo }}>
                 <Header />
                 <Outlet />
@@ -38,7 +41,7 @@ const AppLayout = () => {
                     <Footer />
                 </div>
             </UserContext.Provider>
-        </>
+        </Provider>
     )
 }
 
@@ -90,6 +93,10 @@ const appRouter = createBrowserRouter([
                     <Instamart />
                 </Suspense>
                 )
+            },
+            {
+                path: "/cart",
+                element: <Cart />
             },
 
         ]

@@ -16,7 +16,7 @@ const Body = () => {
     async function getReastaurantsList() {
         const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=25.608087&lng=85.087365&page_type=DESKTOP_WEB_LISTING")
         const json = await data.json();
-        console.log(json);
+        console.log(json?.data?.cards[2]?.data?.data?.cards)
         setAllRestaurantList(json?.data?.cards[2]?.data?.data?.cards)
         setFilteredRestaurantList(json?.data?.cards[2]?.data?.data?.cards)
     }
@@ -30,7 +30,7 @@ const Body = () => {
             console.log("timeinnn");
             const data = filterData(searchText, allRestaurantList)
             setFilteredRestaurantList(data);
-        }, 1000)
+        }, 200)
         return () => {
             console.log("timeout");
             return clearTimeout(getData)
